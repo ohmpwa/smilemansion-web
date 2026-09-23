@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมายแมนชั่น ระยอง (Smile Mansion Rayong) | อบอุ่น ปลอดภัย เหมือนอยู่บ้าน</title>
+    <meta name="description" content="สมายแมนชั่น ระยอง - หอพัก/แมนชั่น ดีไซน์โมเดิร์น อบอุ่น ปลอดภัย บรรยากาศร่มรื่น มินิมอล ใกล้นิคมอุตสาหกรรมและแหล่งช้อปปิ้ง พร้อมสิ่งอำนวยความสะดวกครบครัน">
+    
+    <!-- Google Fonts: Prompt for modern Thai & English typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration for Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        cozy: {
+                            light: '#FAF8F5',     /* Off-white / Cream background */
+                            card: '#FFFFFF',      /* Pure white for cards */
+                            dark: '#2C3E35',      /* Dark slate green for text/headings */
+                            accent: '#4E7E67',    /* Muted sage green */
+                            pastel: '#D8E5DC',    /* Light green pastel */
+                            highlight: '#87A996', /* Soft mid-tone green */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom smooth scroll & styling tweaks */
+        body {
+            background-color: #FAF8F5;
+            color: #2C3E35;
+        }
+        .glass-header {
+            background-color: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8E5DC;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #87A996;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-cozy-pastel/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <!-- [EDITABLE] เปลี่ยนชื่อไฟล์รูปภาพโลโก้ให้ตรงกับที่คุณบันทึกไว้ (เช่น logo.png) -->
+                    <img src="./logo.png" alt="Smile Mansion Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
+                    <span class="text-xl font-bold tracking-wide text-cozy-dark group-hover:text-cozy-accent transition-colors duration-300 hidden sm:block">
+                        Smile Mansion
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-cozy-dark hover:text-cozy-accent font-medium text-sm transition-colors duration-200">หน้าแรก</a>
+                    <a href="#facilities" class="text-cozy-dark hover:text-cozy-accent font-medium text-sm transition-colors duration-200">สิ่งอำนวยความสะดวก</a>
+                    <a href="#gallery" class="text-cozy-dark hover:text-cozy-accent font-medium text-sm transition-colors duration-200">รูปภาพห้องพัก</a>
+                    <a href="#location" class="text-cozy-dark hover:text-cozy-accent font-medium text-sm transition-colors duration-200">ทำเลที่ตั้ง</a>
+                    <a href="#contact" class="text-cozy-dark hover:text-cozy-accent font-medium text-sm transition-colors duration-200">ติดต่อเรา</a>
+                </nav>
+
+                <!-- CTA Header Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 h-11 text-sm font-semibold rounded-full bg-cozy-accent text-white hover:bg-cozy-dark transition-all duration-300 shadow-sm hover:shadow-md">
+                        <i class="fa-regular fa-comment-dots mr-2"></i>สอบถามจองห้อง
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-cozy-dark hover:text-cozy-accent p-2 focus:outline-none" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu (Drawer/Slide down) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-cozy-pastel/30 bg-cozy-light px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
+            <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-cozy-dark hover:bg-cozy-pastel/40 font-medium transition-colors">หน้าแรก</a>
+            <a href="#facilities" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-cozy-dark hover:bg-cozy-pastel/40 font-medium transition-colors">สิ่งอำนวยความสะดวก</a>
+            <a href="#gallery" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-cozy-dark hover:bg-cozy-pastel/40 font-medium transition-colors">รูปภาพห้องพัก</a>
+            <a href="#location" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-cozy-dark hover:bg-cozy-pastel/40 font-medium transition-colors">ทำเลที่ตั้ง</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-cozy-dark hover:bg-cozy-pastel/40 font-medium transition-colors">ติดต่อเรา</a>
+            <div class="pt-2 px-3">
+                <a href="#contact" class="mobile-nav-link w-full inline-flex items-center justify-center px-5 py-3 text-sm font-semibold rounded-lg bg-cozy-accent text-white hover:bg-cozy-dark transition-colors">
+                    <i class="fa-regular fa-comment-dots mr-2"></i>จองห้องพัก / สอบถามข้อมูล
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spacer to offset sticky header -->
+    <div class="h-20" id="home"></div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="relative min-h-[calc(100vh-80px)] flex items-center py-12 md:py-24 overflow-hidden">
+        <!-- Decorative subtle background elements -->
+        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-cozy-pastel/40 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-1/8 -right-32 w-80 h-80 bg-cozy-pastel/30 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Text Column -->
+                <div class="lg:col-span-6 space-y-6 md:space-y-8 text-center lg:text-left">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-cozy-pastel text-cozy-dark uppercase tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cozy-accent mr-2 animate-pulse"></span>
+                        พร้อมเปิดให้เข้าพักแล้ววันนี้
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-cozy-dark leading-tight">
+                        สมายแมนชั่น ระยอง
+                    </h1>
+                    <p class="text-lg sm:text-xl text-cozy-accent font-light leading-relaxed">
+                        "อบอุ่น ปลอดภัย ให้ความรู้สึกเหมือนอยู่บ้าน"
+                    </p>
+                    <p class="text-base text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        แมนชั่นสไตล์มินิมอล บรรยากาศร่มรื่น เงียบสงบ เป็นส่วนตัว ตอบโจทย์ทุกการใช้ชีวิต 
+                        ใกล้นิคมอุตสาหกรรมและสิ่งอำนวยความสะดวกในตัวเมืองระยอง 
+                    </p>
+
+                    <!-- Target / Pricing Note -->
+                    <!-- [EDITABLE] แก้ไขช่วงราคาจริงตรงนี้ได้เลยครับ -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm font-medium text-gray-700">
+                        <span class="flex items-center"><i class="fa-solid fa-tag text-cozy-accent mr-2"></i>เริ่มต้นเพียง 3,500 - 4,500 บาท/เดือน</span>
+                        <span class="hidden sm:inline text-gray-300">|</span>
+                        <span class="flex items-center"><i class="fa-solid fa-shield-halved text-cozy-accent mr-2"></i>ระบบความปลอดภัย 24 ชม.</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full bg-cozy-accent text-white hover:bg-cozy-dark transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            จองห้องพัก / สอบถามข้อมูล
+                            <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                        <a href="#facilities" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full bg-white text-cozy-dark border border-cozy-pastel hover:bg-cozy-pastel/20 transition-all duration-300">
+                            ดูสิ่งอำนวยความสะดวก
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Gallery / Image Column -->
+                <!-- [EDITABLE] ท่านสามารถแทนที่รูปภาพ placeholder นี้ด้วยรูปจริงของแมนชั่นได้ -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-[500px] lg:max-w-none">
+                        <!-- main decorative border background -->
+                        <div class="absolute -inset-2 rounded-[2rem] bg-gradient-to-tr from-cozy-pastel to-cozy-highlight/40 blur-sm opacity-70"></div>
+                        
+                        <!-- Main Cozy Room Image Container -->
+                        <div class="relative bg-white p-3 rounded-[2rem] shadow-xl overflow-hidden">
+                            <!-- [PLACEHOLDER IMAGE] แนะนำให้เลือกรูปห้องพักที่อบอุ่นและสวยงามที่สุดมาใส่ตรงนี้ -->
+                            <img src="./images/730104754_1655610559905104_2572730879636960301_n.jpg" 
+                                 alt="Smile Mansion Room View" 
+                                 class="w-full h-[320px] sm:h-[400px] object-cover rounded-[1.5rem] hover:scale-102 transition-transform duration-500">
+                            
+                            <!-- Overlay badge -->
+                            <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-cozy-pastel/30">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-cozy-dark text-sm sm:text-base">ห้องพักระดับพรีเมียม (Fully Furnished)</h4>
+                                        <p class="text-xs text-gray-500">ตกแต่งสไตล์ Modern & Cozy เน้นความโปร่งโล่งสบาย</p>
+                                    </div>
+                                    <span class="text-xs font-semibold text-cozy-accent bg-cozy-pastel/55 px-2.5 py-1 rounded-full">พร้อมอยู่</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Micro Badges -->
+                        <div class="absolute -top-4 -right-4 bg-white p-3.5 rounded-2xl shadow-lg border border-cozy-pastel/40 flex items-center space-x-2 animate-bounce" style="animation-duration: 3s;">
+                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i class="fa-solid fa-wifi text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-cozy-dark">ฟรี High-Speed Wi-Fi</span>
+                        </div>
+
+                        <div class="absolute -bottom-4 -left-4 bg-white p-3.5 rounded-2xl shadow-lg border border-cozy-pastel/40 flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
+                                <i class="fa-solid fa-circle-check text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-cozy-dark">สะอาด ปลอดโปร่ง</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FACILITIES SECTION ==================== -->
+    <section id="facilities" class="py-20 bg-white border-y border-cozy-pastel/20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-cozy-accent text-sm font-semibold tracking-wider uppercase">Facilities & Amenities</span>
+                <h2 class="text-3xl font-bold text-cozy-dark sm:text-4xl">สิ่งอำนวยความสะดวกครบครัน</h2>
+                <div class="w-16 h-1 bg-cozy-highlight mx-auto rounded-full"></div>
+                <p class="text-gray-500">
+                    เราเตรียมทุกสิ่งที่จำเป็นต่อการใช้ชีวิตที่สะดวกสบายและมีความสุข เพื่อให้คุณพร้อมเข้าอยู่และพักผ่อนได้อย่างเต็มที่
+                </p>
+            </div>
+
+            <!-- Facilities Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Facility 1: AC & Water Heater -->
+                <div class="bg-cozy-light p-8 rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cozy-pastel flex items-center justify-center text-cozy-accent mb-6 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-snowflake text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cozy-dark mb-3">เครื่องปรับอากาศ & เครื่องทำน้ำอุ่น</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        เย็นสบายด้วยเครื่องปรับอากาศประหยัดไฟเบอร์ 5 และหมดกังวลในวันอากาศหนาวด้วยเครื่องทำน้ำอุ่นระบบความปลอดภัยสูงในทุกห้องพัก
+                    </p>
+                </div>
+
+                <!-- Facility 2: Furniture -->
+                <div class="bg-cozy-light p-8 rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cozy-pastel flex items-center justify-center text-cozy-accent mb-6 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-bed text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cozy-dark mb-3">เฟอร์นิเจอร์ครบครัน</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        ตกแต่งสไตล์โมเดิร์นมินิมอลพร้อมเฟอร์นิเจอร์บิวท์อินและลอยตัวคุณภาพดี เช่น เตียงพร้อมเบาะที่นอนคุณภาพ, ตู้เสื้อผ้าขนาดใหญ่ และโต๊ะเครื่องแป้ง
+                    </p>
+                </div>
+
+                <!-- Facility 3: Wi-Fi -->
+                <div class="bg-cozy-light p-8 rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cozy-pastel flex items-center justify-center text-cozy-accent mb-6 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-wifi text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cozy-dark mb-3">อินเทอร์เน็ต Wi-Fi ความเร็วสูง</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        เชื่อมต่อแบบไร้ขีดจำกัดด้วยอินเทอร์เน็ตไร้สายความเร็วสูง ครอบคลุมทั่วถึงทุกจุดและภายในห้องพัก รองรับการ Work from Home หรือรับชมความบันเทิง
+                    </p>
+                </div>
+
+                <!-- Facility 4: Security -->
+                <div class="bg-cozy-light p-8 rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cozy-pastel flex items-center justify-center text-cozy-accent mb-6 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cozy-dark mb-3">ระบบรักษาความปลอดภัย</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        มั่นใจในความปลอดภัยสูงสุดด้วยกล้อง CCTV ตลอด 24 ชั่วโมง, ระบบประตูทางเข้า-ออกคีย์การ์ดอัจฉริยะ และการดูแลจากผู้จัดการ/รปภ. ของอาคาร
+                    </p>
+                </div>
+
+                <!-- Facility 5: Parking -->
+                <div class="bg-cozy-light p-8 rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cozy-pastel flex items-center justify-center text-cozy-accent mb-6 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-square-parking text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cozy-dark mb-3">ที่จอดรถกว้างขวาง</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        พื้นที่จอดรถกว้างขวาง ปลอดภัย สะดวกสบาย รองรับทั้งรถยนต์ส่วนบุคคลและรถจักรยานยนต์ มีการจัดระเบียบและกล้องส่องสว่างดูแลอย่างทั่วถึง
+                    </p>
+                </div>
+
+                <!-- Facility 6: Coin Washing Machine -->
+                <div class="bg-cozy-light p-8 rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cozy-pastel flex items-center justify-center text-cozy-accent mb-6 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-circle-dollar-to-slot text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cozy-dark mb-3">บริการเครื่องซักผ้าหยอดเหรียญ</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        โซนบริการเครื่องซักผ้าหยอดเหรียญและตู้น้ำดื่มสะอาดบริการตัวเอง ตั้งอยู่บริเวณพื้นที่ส่วนกลางของอาคาร เพื่ออำนวยความสะดวกในชีวิตประจำวัน
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY SECTION ==================== -->
+    <section id="gallery" class="py-20 relative">
+        <div class="absolute top-1/3 left-0 w-80 h-80 bg-cozy-pastel/20 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-cozy-accent text-sm font-semibold tracking-wider uppercase">Photo Gallery</span>
+                <h2 class="text-3xl font-bold text-cozy-dark sm:text-4xl">รูปภาพบรรยากาศ & ห้องพักจริง</h2>
+                <div class="w-16 h-1 bg-cozy-highlight mx-auto rounded-full"></div>
+                <p class="text-gray-500">
+                    สัมผัสบรรยากาศความน่าอยู่ ความสะอาด และความกว้างขวางของห้องพักของเรา 
+                    <br class="hidden sm:inline"> (สามารถกดที่รูปภาพเพื่อขยายใหญ่ได้)
+                </p>
+            </div>
+
+            <!-- Gallery Filter (Optional, added for premium styling feel) -->
+            <div class="flex justify-center space-x-2 md:space-x-4 mb-10 overflow-x-auto pb-2">
+                <button class="gallery-filter-btn active px-5 py-2 rounded-full text-xs font-semibold bg-cozy-accent text-white transition-all shadow-sm" data-filter="all">ทั้งหมด</button>
+                <button class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-white text-cozy-dark border border-cozy-pastel hover:bg-cozy-pastel/30 transition-all" data-filter="interior">ภายในห้องพัก</button>
+                <button class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-white text-cozy-dark border border-cozy-pastel hover:bg-cozy-pastel/30 transition-all" data-filter="exterior">ภายนอก & ส่วนกลาง</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <!-- [EDITABLE] ท่านสามารถเปลี่ยนชื่อไฟล์รูปภาพจากโฟลเดอร์ images ได้ที่แอตทริบิวต์ src และ data-src ด้านล่างนี้ -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <!-- Photo 1: Interior -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="interior" data-src="./images/730104754_1655610559905104_2572730879636960301_n.jpg" data-caption="ห้องพักตกแต่งพร้อมอยู่ สบายตาด้วยโทนสีอบอุ่น">
+                    <img src="./images/730104754_1655610559905104_2572730879636960301_n.jpg" 
+                         alt="ห้องพักตกแต่งพร้อมอยู่" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายในห้องพัก</span>
+                        <h4 class="text-white font-bold text-base">ห้องพักหลักพร้อมสิ่งอำนวยความสะดวกครบครัน</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 2: Interior -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="interior" data-src="./images/722671820_1645616587571168_6674934114134074191_n.jpg" data-caption="มุมโต๊ะรับประทานอาหาร เครื่องปรับอากาศ ตู้เย็น และระเบียงในห้องพัก">
+                    <img src="./images/722671820_1645616587571168_6674934114134074191_n.jpg" 
+                         alt="มุมโต๊ะและสิ่งอำนวยความสะดวกในห้องพัก" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายในห้องพัก</span>
+                        <h4 class="text-white font-bold text-base">มุมโต๊ะและสิ่งอำนวยความสะดวกภายในห้อง</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 3: Interior -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="interior" data-src="./images/721266175_1645616680904492_3185882403037445311_n.jpg" data-caption="ห้องน้ำในตัวปูกระเบื้องสะอาดตาพร้อมสุขภัณฑ์ครบครัน">
+                    <img src="./images/721266175_1645616680904492_3185882403037445311_n.jpg" 
+                         alt="ห้องน้ำสะอาด" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายในห้องพัก</span>
+                        <h4 class="text-white font-bold text-base">ห้องน้ำในตัวสะอาด สะดวกสบาย</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 4: Exterior / Common -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="exterior" data-src="./images/524621236_1350156913783805_279827557215874670_n.jpg" data-caption="บรรยากาศภายนอกอาคารและทางเข้าของสมายแมนชั่น">
+                    <img src="./images/524621236_1350156913783805_279827557215874670_n.jpg" 
+                         alt="ตัวอาคารและทางเข้าสมายแมนชั่น" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายนอก & ส่วนกลาง</span>
+                        <h4 class="text-white font-bold text-base">ทางเข้าและตัวอาคารสมายแมนชั่น</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 5: Exterior / Common -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="exterior" data-src="./images/615812467_1504263138373181_7995163280280187375_n.jpg" data-caption="ภาพมุมสูงของอาคารสมายแมนชั่นและบริเวณโดยรอบ">
+                    <img src="./images/615812467_1504263138373181_7995163280280187375_n.jpg" 
+                         alt="ภาพมุมสูงอาคารสมายแมนชั่น" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายนอก & ส่วนกลาง</span>
+                        <h4 class="text-white font-bold text-base">อาคารสมายแมนชั่นและบริเวณโดยรอบ</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 6: Exterior / Common -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="exterior" data-src="./images/635279290_1538317061634455_4282793380245737022_n.jpg" data-caption="วิวอาคารและบรรยากาศยามเย็นของสมายแมนชั่น">
+                    <img src="./images/635279290_1538317061634455_4282793380245737022_n.jpg" 
+                         alt="วิวอาคารและบรรยากาศยามเย็น" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายนอก & ส่วนกลาง</span>
+                        <h4 class="text-white font-bold text-base">วิวอาคารและบรรยากาศยามเย็น</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 7: Exterior / Common -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="exterior" data-src="./images/549295838_1402369238562572_689682145824805156_n.jpg" data-caption="โซนบริการเครื่องซักผ้าหยอดเหรียญสำหรับผู้พักอาศัย">
+                    <img src="./images/549295838_1402369238562572_689682145824805156_n.jpg" 
+                         alt="โซนเครื่องซักผ้าหยอดเหรียญ" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายนอก & ส่วนกลาง</span>
+                        <h4 class="text-white font-bold text-base">โซนเครื่องซักผ้าหยอดเหรียญ</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 8: Exterior / Common -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm border border-cozy-pastel/20 aspect-[4/3] cursor-pointer" data-category="exterior" data-src="./images/529217271_1360030762796420_6888175052825115064_n.jpg" data-caption="ห้องฟิตเนสพร้อมอุปกรณ์ออกกำลังกายสำหรับผู้พักอาศัย">
+                    <img src="./images/529217271_1360030762796420_6888175052825115064_n.jpg" 
+                         alt="ห้องฟิตเนส" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-cozy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cozy-pastel mb-1">ภายนอก & ส่วนกลาง</span>
+                        <h4 class="text-white font-bold text-base">ห้องฟิตเนสสำหรับผู้พักอาศัย</h4>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-9 h-9 rounded-full flex items-center justify-center text-cozy-dark shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom CTA Link to Facebook for More Photos -->
+            <div class="text-center mt-12">
+                <a href="https://www.facebook.com/smilemansionatrayong" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-sm font-semibold text-cozy-accent hover:text-cozy-dark border-b border-cozy-accent hover:border-cozy-dark pb-1 transition-all">
+                    <span>ดูรูปภาพและอัปเดตเพิ่มเติมบนหน้าเพจ Facebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LOCATION & MAP SECTION ==================== -->
+    <section id="location" class="py-20 bg-white border-y border-cozy-pastel/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Location Details Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-cozy-accent text-sm font-semibold tracking-wider uppercase">Location</span>
+                    <h2 class="text-3xl font-bold text-cozy-dark">ทำเลสะดวกสบาย ใจกลางเมืองระยอง</h2>
+                    <div class="w-16 h-1 bg-cozy-highlight rounded-full"></div>
+                    <p class="text-gray-500 leading-relaxed">
+                        สมายแมนชั่น ตั้งอยู่ในจุดที่เดินทางสะดวกสบายมาก เลี่ยงปัญหารถติด เข้า-ออกได้หลายเส้นทาง เหมาะอย่างยิ่งสำหรับผู้ที่ทำงานในตัวเมืองและนิคมอุตสาหกรรมในระยอง
+                    </p>
+
+                    <!-- Nearby Highlights List -->
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-50 text-cozy-accent flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-industry text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-cozy-dark">ใกล้นิคมอุตสาหกรรม</h4>
+                                <p class="text-xs text-gray-500">เดินทางสะดวกไปนิคมอุตสาหกรรมไออาร์พีซี (IRPC) และนิคมหลักอื่นๆ ในจังหวัดระยอง</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-50 text-cozy-accent flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-store text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-cozy-dark">ใกล้ศูนย์การค้าชั้นนำ</h4>
+                                <p class="text-xs text-gray-500">ใกล้ห้างสรรพสินค้าเซ็นทรัลพลาซา ระยอง, บิ๊กซี, โลตัส และตลาดชุมชนหาของกินง่าย</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-50 text-cozy-accent flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-heart-pulse text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-cozy-dark">ใกล้สถานบริการสำคัญ</h4>
+                                <p class="text-xs text-gray-500">ใกล้โรงพยาบาล สถานศึกษา ปั๊มน้ำมัน ร้านสะดวกซื้อ (7-Eleven) ในระยะเดินถึง</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Iframe Column -->
+                <div class="lg:col-span-7">
+                    <div class="relative bg-cozy-light p-3 rounded-3xl border border-cozy-pastel/30 shadow-md">
+                        <!-- Google Maps Embed Wrapper -->
+                        <!-- [EDITABLE] ท่านสามารถไปที่ Google Maps แล้วนำ Embed Link (iframe src) จริงของที่ตั้งแมนชั่นมาใส่แทนที่ลิงก์ใน src นี้ได้เลยครับ -->
+                        <!-- ลิงก์ที่ใส่ไว้เป็นแผนที่ระยองโดยสังเขป -->
+                        <div class="w-full h-[350px] sm:h-[400px] overflow-hidden rounded-2xl">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124505.74836643669!2d101.19694708761445!3d12.673898144078737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102f09d84bf40d3%3A0xc32c25608bfa0446!2z4Lia4Lix4LiZ4LmA4LiU4Li04LiZ4LiB4Liy4Lij4LiX4Liy4LiH4LiB4Liy4Lij4LmA4LiU4Li04LiZ4LiB4Liy4Lij4LiV4Lix4LiV4LiZ4LmM!5e0!3m2!1sth!2sth!4v1718182283000!5m2!1sth!2sth" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT US SECTION ==================== -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-cozy-pastel/30 rounded-full blur-3xl -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-cozy-accent text-sm font-semibold tracking-wider uppercase">Contact Us</span>
+                        <h2 class="text-3xl font-bold text-cozy-dark mt-2">สนใจจองห้องพัก / สอบถามเพิ่มเติม</h2>
+                        <div class="w-16 h-1 bg-cozy-highlight mt-4 rounded-full"></div>
+                        <p class="text-gray-500 mt-4 leading-relaxed">
+                            แวะมาเยี่ยมชมโครงการจริง หรือสอบถามข้อมูลห้องว่างและรายละเอียดค่าเช่าได้หลากหลายช่องทาง เจ้าหน้าที่ของเรายินดีตอบคำถามและช่วยเหลือทุกท่านครับ
+                        </p>
+                    </div>
+
+                    <!-- Contact details -->
+                    <!-- [EDITABLE] แก้ไขเบอร์โทรศัพท์ ไอดีไลน์ และอีเมลของแมนชั่นตรงนี้ได้เลยครับ -->
+                    <div class="space-y-6">
+                        <a href="tel:0944134343" class="flex items-center p-4 bg-white rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-cozy-pastel/60 text-cozy-accent flex items-center justify-center flex-shrink-0 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div class="ml-4">
+                                <span class="text-xs text-gray-400 block">เบอร์โทรศัพท์ติดต่อ</span>
+                                <span class="text-base font-bold text-cozy-dark">094-413-4343 (ผู้จัดการโครงการ)</span>
+                            </div>
+                        </a>
+
+                        <a href="https://lin.ee/Gt3ycrP" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 bg-white rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-cozy-pastel/60 text-cozy-accent flex items-center justify-center flex-shrink-0 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                                <i class="fa-brands fa-line text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <span class="text-xs text-gray-400 block">Line Official ID</span>
+                                <span class="text-base font-bold text-cozy-dark">@smilemansionrayong</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.facebook.com/smilemansionatrayong" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 bg-white rounded-2xl border border-cozy-pastel/30 hover:border-cozy-accent/40 shadow-sm transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-cozy-pastel/60 text-cozy-accent flex items-center justify-center flex-shrink-0 group-hover:bg-cozy-accent group-hover:text-white transition-colors duration-300">
+                                <i class="fa-brands fa-facebook text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <span class="text-xs text-gray-400 block">Facebook Fanpage</span>
+                                <span class="text-base font-bold text-cozy-dark text-cozy-accent group-hover:text-cozy-dark">Smile Mansion At Rayong</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white p-8 sm:p-10 rounded-3xl border border-cozy-pastel/40 shadow-md">
+                        <h3 class="text-xl font-bold text-cozy-dark mb-2">ฝากข้อความถึงเรา</h3>
+                        <p class="text-sm text-gray-400 mb-6">ระบุข้อมูลของคุณเพื่อให้เจ้าหน้าที่ติดต่อกลับโดยด่วนที่สุด</p>
+                        
+                        <form id="contact-form" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="name" class="block text-xs font-semibold text-cozy-dark uppercase tracking-wider mb-2">ชื่อ-นามสกุลของคุณ</label>
+                                    <input type="text" id="name" required placeholder="เช่น สมชาย ใจดี" 
+                                           class="w-full px-4 py-3.5 text-sm rounded-xl bg-cozy-light border border-cozy-pastel/60 text-cozy-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cozy-pastel focus:border-cozy-accent transition-all">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-xs font-semibold text-cozy-dark uppercase tracking-wider mb-2">เบอร์โทรศัพท์ติดต่อ</label>
+                                    <input type="tel" id="phone" required placeholder="เช่น 0891234567" 
+                                           class="w-full px-4 py-3.5 text-sm rounded-xl bg-cozy-light border border-cozy-pastel/60 text-cozy-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cozy-pastel focus:border-cozy-accent transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-xs font-semibold text-cozy-dark uppercase tracking-wider mb-2">อีเมล (ถ้ามี)</label>
+                                <input type="email" id="email" placeholder="example@email.com" 
+                                       class="w-full px-4 py-3.5 text-sm rounded-xl bg-cozy-light border border-cozy-pastel/60 text-cozy-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cozy-pastel focus:border-cozy-accent transition-all">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-semibold text-cozy-dark uppercase tracking-wider mb-2">ข้อความที่ต้องการสอบถาม</label>
+                                <textarea id="message" rows="4" required placeholder="ระบุประเภทห้องพักที่สนใจ หรือคำถามเพิ่มเติม เช่น ต้องการจองช่วงเดือนหน้า..." 
+                                          class="w-full px-4 py-3.5 text-sm rounded-xl bg-cozy-light border border-cozy-pastel/60 text-cozy-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cozy-pastel focus:border-cozy-accent transition-all resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-4 text-base font-semibold rounded-xl bg-cozy-accent text-white hover:bg-cozy-dark transition-all duration-300 shadow-md hover:shadow-lg">
+                                <i class="fa-regular fa-paper-plane mr-2"></i>ส่งข้อความติดต่อ
+                            </button>
+                        </form>
+
+                        <!-- Form Submission Success Alert Mockup -->
+                        <div id="form-success" class="hidden mt-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center space-x-3 animate-fade-in">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                                <i class="fa-solid fa-circle-check text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-emerald-800">ส่งข้อความเรียบร้อยแล้ว!</h4>
+                                <p class="text-xs text-emerald-600 mt-0.5">ทางเราได้รับข้อความของท่านแล้ว เจ้าหน้าที่จะติดต่อกลับโดยเร็วที่สุด ขอบคุณครับ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-cozy-dark text-cozy-pastel/80 py-12 border-t border-cozy-accent/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-6 sm:space-y-0">
+                <!-- brand block -->
+                <div class="space-y-2 text-center sm:text-left">
+                    <span class="text-lg font-bold text-white tracking-wide">สมายแมนชั่น ระยอง</span>
+                    <p class="text-xs text-cozy-pastel/60">© 2026 Smile Mansion Rayong. All rights reserved. Designed with ❤️ for cozy living.</p>
+                </div>
+                
+                <!-- Social & Top Link -->
+                <div class="flex items-center space-x-6">
+                    <a href="https://www.facebook.com/smilemansionatrayong" target="_blank" rel="noopener noreferrer" class="text-cozy-pastel hover:text-white transition-colors text-xl" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#home" class="w-10 h-10 rounded-full border border-cozy-pastel/30 flex items-center justify-center text-cozy-pastel hover:text-white hover:border-white transition-all" aria-label="Scroll to top">
+                        <i class="fa-solid fa-arrow-up text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== LIGHTBOX POPUP MODAL ==================== -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <!-- Close Button -->
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white p-2 focus:outline-none transition-colors" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark text-3xl"></i>
+        </button>
+
+        <!-- Navigation Buttons -->
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 focus:outline-none transition-colors" aria-label="Previous Image">
+            <i class="fa-solid fa-chevron-left text-4xl"></i>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 focus:outline-none transition-colors" aria-label="Next Image">
+            <i class="fa-solid fa-chevron-right text-4xl"></i>
+        </button>
+
+        <!-- Main Media Display Area -->
+        <div class="max-w-[85vw] max-h-[75vh] flex items-center justify-center relative">
+            <img id="lightbox-img" src="" alt="Lightbox image" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl transition-all duration-300 transform scale-95">
+        </div>
+
+        <!-- Details / Caption -->
+        <div class="mt-6 text-center max-w-[80vw]">
+            <p id="lightbox-caption" class="text-white font-medium text-base sm:text-lg"></p>
+            <p id="lightbox-index" class="text-white/40 text-xs mt-2"></p>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // --- 1. Responsive Mobile Menu Drawer ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            });
+        });
+
+        // --- 2. Interactive Gallery Filter & Lightbox ---
+        const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+        let currentFilteredItems = [...galleryItems];
+        let currentActiveIndex = 0;
+
+        // Filtering Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Update active button styles
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-cozy-accent', 'text-white', 'shadow-sm');
+                    b.classList.add('bg-white', 'text-cozy-dark', 'border');
+                });
+                btn.classList.add('active', 'bg-cozy-accent', 'text-white', 'shadow-sm');
+                btn.classList.remove('bg-white', 'text-cozy-dark', 'border');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                // Filter elements
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Update filtered index references
+                currentFilteredItems = galleryItems.filter(item => {
+                    return filterValue === 'all' || item.getAttribute('data-category') === filterValue;
+                });
+            });
+        });
+
+        // Lightbox Elements
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxIndex = document.getElementById('lightbox-index');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        function openLightbox(index) {
+            currentActiveIndex = index;
+            const targetItem = currentFilteredItems[currentActiveIndex];
+            
+            const src = targetItem.getAttribute('data-src');
+            const caption = targetItem.getAttribute('data-caption') || targetItem.querySelector('img').alt;
+
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightboxIndex.textContent = `รูปภาพที่ ${currentActiveIndex + 1} จากทั้งหมด ${currentFilteredItems.length} รูป`;
+
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            // Micro-animation fade in
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+            }, 10);
+
+            // Prevent background scrolling
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                // Restore background scrolling
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+
+        // --- Keyboard Controls & Navigation ---
+        function showNextImage() {
+            let nextIndex = currentActiveIndex + 1;
+            if (nextIndex >= currentFilteredItems.length) {
+                nextIndex = 0; // Wrap to first
+            }
+            openLightbox(nextIndex);
+        }
+
+        function showPrevImage() {
+            let prevIndex = currentActiveIndex - 1;
+            if (prevIndex < 0) {
+                prevIndex = currentFilteredItems.length - 1; // Wrap to last
+            }
+            openLightbox(prevIndex);
+        }
+
+        // Attach event listeners to gallery items
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const itemIndex = currentFilteredItems.indexOf(item);
+                if (itemIndex !== -1) {
+                    openLightbox(itemIndex);
+                }
+            });
+        });
+
+        // Lightbox control buttons
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightboxPrev.addEventListener('click', showPrevImage);
+
+        // Close on clicking the black backdrop area
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard controls for Lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+        });
+
+
+        // --- 3. Form Submission Simulation ---
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Collect Form Values (Mock Up)
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            console.log("Form Submitted:", { name, phone, email, message });
+
+            // Hide/Clear Form or show success alert
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+
+            // Auto hide success alert after 8 seconds
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 8000);
+        });
+
+        // --- 4. Scroll Header Shadow Effect ---
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
