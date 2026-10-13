@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบบริหารหอพัก Smile Mansion | สำหรับเจ้าของหอพักและอพาร์ตเมนต์</title>
+    <meta name="description" content="ระบบบริหารหอพักและอพาร์ตเมนต์ผ่านเว็บ ใช้บนมือถือได้ ดูผังห้อง จัดการสัญญา จดมิเตอร์ ออกใบแจ้งหนี้/ใบเสร็จ และติดตามงานซ่อม">
+    
+    <!-- Google Fonts: Prompt for modern Thai & English typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration for Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        cozy: {
+                            light: '#FAF8F5',     /* Off-white / Cream background */
+                            card: '#FFFFFF',      /* Pure white for cards */
+                            dark: '#2C3E35',      /* Dark slate green for text/headings */
+                            accent: '#4E7E67',    /* Muted sage green */
+                            pastel: '#D8E5DC',    /* Light green pastel */
+                            highlight: '#87A996', /* Soft mid-tone green */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom smooth scroll & styling tweaks */
+        body {
+            background-color: #FAF8F5;
+            color: #2C3E35;
+        }
+        .glass-header {
+            background-color: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8E5DC;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #87A996;
+        }
+    </style>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-cozy-pastel/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#home" class="flex items-center space-x-3">
+                    <img src="./logo.png" alt="Smile Mansion Logo" class="w-12 h-12 object-contain" />
+                    <span class="text-xl font-bold tracking-wide text-cozy-dark hidden sm:block">Smile Mansion <span class="text-sm font-medium text-cozy-accent">สำหรับเจ้าของหอพัก</span></span>
+                </a>
+                <a href="#contact" class="inline-flex items-center justify-center px-5 h-11 text-sm font-semibold rounded-full bg-cozy-accent text-white hover:bg-cozy-dark transition-all">นัดดูระบบตัวอย่าง</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="home" class="pt-36 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h1 class="text-3xl md:text-5xl font-bold leading-tight text-cozy-dark">เลิกปวดหัวกับบิลกระดาษและ Excel<br><span class="text-cozy-accent">จัดการหอพักครบ จบในมือถือเครื่องเดียว</span></h1>
+            <p class="text-lg text-cozy-dark/70">ระบบบริหารหอพักและอพาร์ตเมนต์ ช่วยดูผังห้อง จัดการสัญญา จดมิเตอร์ ออกใบแจ้งหนี้และใบเสร็จ และติดตามงานซ่อม ได้ในที่เดียว</p>
+            <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full bg-cozy-accent text-white hover:bg-cozy-dark transition-all shadow-md">นัดหมายดูระบบตัวอย่าง</a>
+            <p class="text-sm text-cozy-dark/60">ไม่ต้องลงโปรแกรม &bull; ใช้งานผ่านเว็บเบราว์เซอร์บนมือถือหรือคอมพิวเตอร์ &bull; ต้องเข้าสู่ระบบและแบ่งสิทธิ์ผู้ใช้งาน</p>
+        </div>
+    </section>
+
+    <!-- ==================== PAIN POINTS ==================== -->
+    <section class="py-20 bg-white border-y border-cozy-pastel/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">ปัญหาที่เจ้าของหอพักเจอบ่อย</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl bg-cozy-light border border-cozy-pastel/30"><i class="fa-solid fa-calculator text-cozy-accent mr-2"></i>สิ้นเดือนทีไร เสียเวลาหลายวันนั่งคำนวณค่าน้ำ-ค่าไฟ?</div>
+                <div class="p-6 rounded-2xl bg-cozy-light border border-cozy-pastel/30"><i class="fa-solid fa-file-invoice text-cozy-accent mr-2"></i>ส่งบิลกระดาษแล้วหาย ผู้เช่าลืมจ่าย ตามยอดค้างยาก?</div>
+                <div class="p-6 rounded-2xl bg-cozy-light border border-cozy-pastel/30"><i class="fa-solid fa-table text-cozy-accent mr-2"></i>ข้อมูลผู้เช่าอยู่ใน Excel หลายไฟล์ ไม่รู้ว่าห้องไหนว่าง สัญญาไหนใกล้หมด?</div>
+                <div class="p-6 rounded-2xl bg-cozy-light border border-cozy-pastel/30"><i class="fa-solid fa-folder-open text-cozy-accent mr-2"></i>ผู้เช่าย้ายเข้า-ออก สัญญากระดาษกระจัดกระจาย หาเอกสารไม่เจอ?</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES ==================== -->
+    <section id="features" class="py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">ระบบช่วยอะไรได้บ้าง</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl bg-white shadow-sm border border-cozy-pastel/30"><h3 class="font-semibold text-lg mb-2"><i class="fa-solid fa-building text-cozy-accent mr-2"></i>ผังห้องพัก</h3><p class="text-cozy-dark/70">เห็นห้องว่าง ห้องจอง ห้องมีผู้เช่า และห้องที่ติดซ่อม/รอทำความสะอาด แยกตามอาคารและชั้นในหน้าจอเดียว</p></div>
+                <div class="p-6 rounded-2xl bg-white shadow-sm border border-cozy-pastel/30"><h3 class="font-semibold text-lg mb-2"><i class="fa-solid fa-receipt text-cozy-accent mr-2"></i>ออกบิลจากเลขมิเตอร์</h3><p class="text-cozy-dark/70">กรอกเลขมิเตอร์น้ำ/ไฟ ระบบคำนวณยอดและสร้างใบแจ้งหนี้ทุกห้อง บันทึกรับชำระ ออกใบเสร็จ และติดตามยอดค้างชำระ</p></div>
+                <div class="p-6 rounded-2xl bg-white shadow-sm border border-cozy-pastel/30"><h3 class="font-semibold text-lg mb-2"><i class="fa-solid fa-file-signature text-cozy-accent mr-2"></i>สัญญาและการต่อสัญญา</h3><p class="text-cozy-dark/70">เก็บข้อมูลการจอง เช็คอิน ย้ายออก และประวัติการต่อสัญญา พร้อมแจ้งสัญญาที่ใกล้หมด</p></div>
+                <div class="p-6 rounded-2xl bg-white shadow-sm border border-cozy-pastel/30"><h3 class="font-semibold text-lg mb-2"><i class="fa-solid fa-screwdriver-wrench text-cozy-accent mr-2"></i>ใบงานซ่อมและทำความสะอาด</h3><p class="text-cozy-dark/70">เปิดใบงาน กำหนดผู้รับผิดชอบและวันกำหนดเสร็จ ติดตามสถานะได้ ไม่ตกหล่น</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="py-20 bg-white border-y border-cozy-pastel/20">
+        <div class="max-w-3xl mx-auto px-4 text-center space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold">สนใจดูระบบตัวอย่าง หรือสอบถามราคา</h2>
+            <!-- TODO(Ohm): ใส่ช่องทางติดต่อสำหรับลูกค้าซอฟต์แวร์ (LINE / อีเมล) ก่อนเผยแพร่ -->
+            <p class="text-cozy-dark/70">ช่องทางติดต่อทีมงานจะประกาศเร็วๆ นี้</p>
+            <p class="text-sm text-cozy-dark/60"><i class="fa-solid fa-shield-halved text-cozy-accent mr-1"></i>เราให้ความสำคัญกับการคุ้มครองข้อมูลส่วนบุคคลตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล (PDPA)</p>
+        </div>
+    </section>
+
+    <footer class="bg-cozy-dark text-cozy-pastel/80 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <span class="text-lg font-bold text-white">Smile Mansion &mdash; ระบบบริหารหอพัก</span>
+            <a href="./index.html" class="text-sm hover:text-white">กลับไปหน้าหอพักสมายแมนชั่น ระยอง</a>
+        </div>
+    </footer>
+</body>
+</html>
